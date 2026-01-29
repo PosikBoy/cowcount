@@ -21,6 +21,6 @@ COPY . .
 
 RUN mkdir -p /app/uploads
 
-EXPOSE 9000
+EXPOSE 8000
 
 CMD ["python", "run.py"]
