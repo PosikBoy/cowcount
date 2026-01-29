@@ -11,7 +11,7 @@ services:
       - "5007:8000"
     volumes:
       - ./uploads:/app/uploads
-      - ./ml-service/cowcount.db:/app/cowcount.db
+      - ./ml-service:/app
     environment:
       - PYTHONUNBUFFERED=1
     networks:
