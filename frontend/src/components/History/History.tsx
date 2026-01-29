@@ -133,7 +133,7 @@ export default function History() {
 
       <Grid container spacing={3} sx={{ mt: 1 }}>
         {history.map((item) => (
-          <Grid item xs={12} sm={6} md={4} key={item.id}>
+          <Grid size={{ xs: 12, sm: 6, md: 4 }} key={item.id}>
             <Card className={styles.historyCard}>
               <Box className={styles.imageContainer}>
                 <img

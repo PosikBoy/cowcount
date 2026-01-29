@@ -6,9 +6,11 @@ import {
   CardContent,
   Chip,
   Container,
-  Grid,
   Typography,
 } from "@mui/material";
+
+import Grid from "@mui/material/Grid";
+
 import styles from "./page.module.scss";
 
 export default function AboutPage() {
@@ -104,15 +106,22 @@ export default function AboutPage() {
             </Typography>
             <Grid container spacing={3}>
               {features.map((feature, index) => (
-                <Grid item xs={12} md={6} key={index}>
-                  <Box className={styles.feature}>
-                    <Typography variant="h6" className={styles.featureTitle}>
-                      {feature.title}
-                    </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                      {feature.description}
-                    </Typography>
-                  </Box>
+                <Grid container spacing={3}>
+                  {features.map((feature, index) => (
+                    <Grid size={{ xs: 12, md: 6 }} key={index}>
+                      <Box className={styles.feature}>
+                        <Typography
+                          variant="h6"
+                          className={styles.featureTitle}
+                        >
+                          {feature.title}
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                          {feature.description}
+                        </Typography>
+                      </Box>
+                    </Grid>
+                  ))}
                 </Grid>
               ))}
             </Grid>
