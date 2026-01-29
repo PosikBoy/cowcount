@@ -1,0 +1,17 @@
+.detailCard {
+  margin-bottom: 16px;
+  padding: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+
+  &:hover {
+    background-color: rgba(25, 118, 210, 0.05);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    border: 2px solid #ff5722;
+    background-color: rgba(255, 87, 34, 0.05);
+  }
+}

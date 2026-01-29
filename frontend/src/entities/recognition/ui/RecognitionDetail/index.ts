@@ -1,0 +1,1 @@
+export { RecognitionDetail } from "./RecognitionDetail";

@@ -1,25 +1,12 @@
 "use client";
 
+import { API_ENDPOINTS, getWsUrl } from "@/shared/api/config";
+import { Detection } from "@/shared/types/recognition";
 import VideocamIcon from "@mui/icons-material/Videocam";
 import VideocamOffIcon from "@mui/icons-material/VideocamOff";
 import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import styles from "./LiveCamera.module.scss";
-
-interface Detection {
-  confidence: number;
-  bbox: {
-    x1: number;
-    y1: number;
-    x2: number;
-    y2: number;
-  };
-}
-
-interface DetectionResult {
-  cows_count: number;
-  detections: Detection[];
-}
 
 export const LiveCamera = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -47,7 +34,7 @@ export const LiveCamera = () => {
   }, [currentDetections]);
 
   const connectWebSocket = () => {
-    const ws = new WebSocket("ws://localhost:9000/stream/video");
+    const ws = new WebSocket(getWsUrl(API_ENDPOINTS.WS_VIDEO_STREAM));
 
     ws.onopen = () => {
       console.log("WebSocket connected");
