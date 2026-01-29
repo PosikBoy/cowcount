@@ -1,0 +1,46 @@
+.container {
+  width: 100%;
+  margin: 20px 0;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  max-height: 70vh;
+  border-radius: 8px 8px 0 0;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video {
+  max-width: 100%;
+  max-height: 70vh;
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: #f5f5f5;
+  border-radius: 0 0 8px 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

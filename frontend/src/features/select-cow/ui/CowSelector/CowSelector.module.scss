@@ -1,0 +1,31 @@
+.cowsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.cowSquare {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1976d2;
+  border-radius: 12px;
+  font-size: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.cowSquareSelected {
+  background-color: #ff5722;
+  transform: scale(1.15);
+  box-shadow: 0 4px 8px rgba(255, 87, 34, 0.4);
+}
