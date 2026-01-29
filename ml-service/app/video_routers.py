@@ -24,7 +24,7 @@ router = APIRouter(prefix="/video", tags=["Video Processing"])
 
 
 @router.post("/analyze", response_model=Dict, status_code=201)
-@limiter.limit("1/minute")
+@limiter.limit("5/minute")
 async def analyze_video(
     request: Request,
     file: UploadFile = File(...),
@@ -35,7 +35,7 @@ async def analyze_video(
     
     - **file**: Video file (MP4, AVI, MOV, max 200MB, max 10 minutes duration)
     - **sample_interval**: Analyze frames every N seconds (default: 1.0 second)
-    - **Rate limit**: 1 request per minute per IP address
+    - **Rate limit**: 5 requests per minute per IP address
     
     Returns analysis results with detection data for each timestamp.
     Video is saved for playback but no processed video is created.

@@ -15,10 +15,10 @@ from app.routers import router as detection_router
 from app.video_routers import router as video_router
 from app.stream_routers import router as stream_router
 
-# Initialize rate limiter with stricter limits
+# Initialize rate limiter with reasonable limits
 limiter = Limiter(
     key_func=get_remote_address,
-    default_limits=["100/hour", "20/minute"]  # Global limits for all endpoints
+    default_limits=["1000/hour", "100/minute"]  # Global limits for all endpoints
 )
 
 
@@ -67,7 +67,7 @@ app.include_router(stream_router)
 
 
 @app.get("/", tags=["Root"])
-@limiter.limit("30/minute")
+@limiter.limit("100/minute")
 async def root(request: Request):
     """
     Root endpoint - API information
@@ -77,12 +77,12 @@ async def root(request: Request):
         "version": "2.0.0",
         "architecture": "Layered (Repository + Service + Router)",
         "security": {
-            "rate_limiting": "Enabled - 1 req/min for processing, 100 req/hour globally",
+            "rate_limiting": "Enabled - 10 req/min for processing, 1000 req/hour globally",
             "ddos_protection": "Active"
         },
         "endpoints": {
-            "detect": "POST /detect - Upload and detect cows (1/min)",
-            "video_analyze": "POST /video/analyze - Analyze video (1/min)",
+            "detect": "POST /detect - Upload and detect cows (10/min)",
+            "video_analyze": "POST /video/analyze - Analyze video (5/min)",
             "history": "GET /detect/history - Get detection history",
             "detail": "GET /detect/{id} - Get specific detection",
             "delete": "DELETE /detect/{id} - Delete detection",
@@ -95,7 +95,7 @@ async def root(request: Request):
 
 
 @app.get("/health", tags=["Health"])
-@limiter.limit("60/minute")
+@limiter.limit("200/minute")
 async def health_check(request: Request):
     """
     Health check endpoint

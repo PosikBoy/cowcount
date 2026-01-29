@@ -35,7 +35,7 @@ def get_recognition_service(db: Session = Depends(get_db)) -> RecognitionService
 
 
 @router.post("", response_model=RecognitionResponse, status_code=201)
-@limiter.limit("1/minute")
+@limiter.limit("10/minute")
 async def detect_cows(
     request: Request,
     file: UploadFile = File(...),
@@ -45,7 +45,7 @@ async def detect_cows(
     Upload an image and detect cows using YOLO
     
     - **file**: Image file (JPG or PNG, max 5MB)
-    - **Rate limit**: 1 request per minute per IP address
+    - **Rate limit**: 10 requests per minute per IP address
     
     Returns detection results with cow count and bounding boxes
     """
