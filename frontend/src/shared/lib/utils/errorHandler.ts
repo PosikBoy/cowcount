@@ -164,9 +164,6 @@ export const retryAsync = async <T>(
   throw lastError!;
 };
 
-/**
- * Log error to console (can be extended to send to error tracking service)
- */
 export const logError = (error: unknown, context?: string): void => {
   const timestamp = new Date().toISOString();
   const errorMessage = parseApiError(error);
@@ -175,9 +172,4 @@ export const logError = (error: unknown, context?: string): void => {
     message: errorMessage,
     error,
   });
-
-  // TODO: Send to error tracking service (e.g., Sentry)
-  // if (process.env.NODE_ENV === 'production') {
-  //   Sentry.captureException(error, { contexts: { custom: { context } } });
-  // }
 };

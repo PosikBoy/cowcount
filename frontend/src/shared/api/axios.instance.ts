@@ -22,13 +22,6 @@ export const apiClient = axios.create({
 // Request interceptor
 apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
-    // Log request in development
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        `[API Request] ${config.method?.toUpperCase()} ${config.url}`,
-      );
-    }
-
     // Add timestamp to prevent caching
     if (config.method === "get") {
       config.params = {
@@ -48,14 +41,6 @@ apiClient.interceptors.request.use(
 // Response interceptor
 apiClient.interceptors.response.use(
   (response: AxiosResponse) => {
-    // Log response in development
-    if (process.env.NODE_ENV === "development") {
-      console.log(
-        `[API Response] ${response.config.method?.toUpperCase()} ${response.config.url}`,
-        response.status,
-      );
-    }
-
     return response;
   },
   async (error: AxiosError) => {
@@ -66,10 +51,6 @@ apiClient.interceptors.response.use(
     if (error.response) {
       // Server responded with error status
       const { status, data } = error.response;
-
-      if (process.env.NODE_ENV === "development") {
-        console.error(`[API Error] ${status}:`, data);
-      }
 
       // Handle rate limiting
       if (status === 429) {
