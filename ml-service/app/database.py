@@ -5,9 +5,14 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 import os
+from pathlib import Path
+
+# Ensure data directory exists
+DATA_DIR = Path("/app/data")
+DATA_DIR.mkdir(parents=True, exist_ok=True)
 
 # Database URL from environment or default to SQLite
-DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./cowcount.db")
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./data/cowcount.db")
 
 # Create engine
 engine = create_engine(

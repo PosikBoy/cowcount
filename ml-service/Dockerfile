@@ -19,7 +19,7 @@ RUN pip install -r requirements.txt
 
 COPY . .
 
-RUN mkdir -p /app/uploads
+RUN mkdir -p /app/uploads /app/data
 
 EXPOSE 8000
 
