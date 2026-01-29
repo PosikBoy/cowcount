@@ -18,7 +18,7 @@ COPY . .
 
 # Set environment variables for build
 ENV NEXT_TELEMETRY_DISABLED 1
-ENV NEXT_PUBLIC_API_URL=http://localhost:5007
+ENV NEXT_PUBLIC_API_URL=https://api.cowcounter.dealive.ru
 
 # Create public directory if it doesn't exist
 RUN mkdir -p public
