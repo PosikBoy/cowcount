@@ -3,10 +3,12 @@
  */
 
 // API Configuration
+// These values are read from environment variables (NEXT_PUBLIC_API_URL, NEXT_PUBLIC_WS_URL)
+// Fallback to production API if not set
 export const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+  process.env.NEXT_PUBLIC_API_URL || "https://api.cowcounter.dealive.ru";
 export const WS_BASE_URL =
-  process.env.NEXT_PUBLIC_WS_URL || "ws://localhost:8000";
+  process.env.NEXT_PUBLIC_WS_URL || "wss://api.cowcounter.dealive.ru";
 
 // File Upload Limits
 export const MAX_IMAGE_SIZE_MB = 5;
